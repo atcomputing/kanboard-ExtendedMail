@@ -1,7 +1,14 @@
 ExtendedMail
 ==============================
 
-My plugin is awesome
+This Plugin adds to Kanboard comment by mail. This makes kanboard more useful as remote support ticketing systeem.
+It ads:
+
+* custom reply_to
+* configuarble default for(to,subject,reply, bod ) which might include variables
+
+![screenshot](doc/Screenshot_20180227_165528.png)*screenshot*
+
 
 Author
 ------
