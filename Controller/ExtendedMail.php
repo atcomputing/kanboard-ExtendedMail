@@ -13,7 +13,7 @@ use Kanboard\Controller\BaseController;
 class ExtendedMail extends BaseController
 {
     /**
-     * Show ExtendedMail settings 
+     * Show ExtendedMail settings
      *
      * @access public
      */

@@ -6,7 +6,7 @@ namespace Kanboard\Plugin\ExtendedMail\Helper;
 use Kanboard\Core\Base;
 
 /**
- * Class helper for mail temlates 
+ * Class helper for mail temlates
  *
  * @package Kanboard\Plugin\ExtendedMail\Helper
  * @author  Rens Sikma <rens@atcomputing.nl>
@@ -15,7 +15,7 @@ class MailTemplate extends Base
 {
 
     # if you update you should also update variableExpansion
-    public static $pattern = array ('%task_id' , '%task_title',  '%task_discriptio',    '%project_id', '%project_email',   '%user_name'     , '%user_email');
+    public static $pattern = array ('%task_id' , '%task_title',  '%task_discription',    '%project_id', '%project_email',   '%user_name'     , '%user_email');
 
      /**
      * @access public
@@ -28,17 +28,15 @@ class MailTemplate extends Base
     {
         $user = $this->userSession->getAll();
        // TODO remove repetion ?/use transposer array
-        $pattern   = array ('%task_id' , '%task_title',  '%task_discriptio',    '%project_id',
-                            '%project_email',   '%user_name'     , '%user_email');
         $variables = array ($task['id'], $task['title'] , $task['description'], $project['id'],
                             $project['email'], $user['username'], $user['email'] );
 
-        return str_replace($pattern ,$variables ,$msg);
+        return str_replace(self::$pattern ,$variables ,$msg);
     }
 
      /**
      * @param  integer $project_id
-     * @return string 
+     * @return string
      */
     public function Treply_to($project_id)
     {
@@ -47,7 +45,7 @@ class MailTemplate extends Base
 
      /**
      * @param  integer $project_id
-     * @return string 
+     * @return string
      */
     public function Tsubject($project_id)
     {
@@ -56,7 +54,7 @@ class MailTemplate extends Base
 
      /**
      * @param  integer $project_id
-     * @return string 
+     * @return string
      */
     public function Tto($project_id)
     {
@@ -65,7 +63,7 @@ class MailTemplate extends Base
 
      /**
      * @param  integer $project_id
-     * @return string 
+     * @return string
      */
     public function Tbody($project_id)
     {
