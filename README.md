@@ -35,4 +35,15 @@ Note: Plugin folder is case-sensitive.
 Documentation
 -------------
 
-TODO.
+you can change the settings in: project settings -> ExtendedMail (side panel)
+
+available variables you can use:
+
+* %task_id
+* %task_title
+* %task_discription
+* %project_id
+* %project_email    (you can change this in: edit project)
+* %user_name
+* %user_email
+
