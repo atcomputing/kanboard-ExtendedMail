@@ -15,7 +15,10 @@ class MailTemplate extends Base
 {
 
     # if you update you should also update variableExpansion
-    public static $pattern = array ('%task_id' , '%task_title',  '%task_discription',    '%project_id', '%project_email',   '%user_name'     , '%user_email');
+    public static $pattern = array ('%task_id', '%task_title', '%task_discription',
+                                    '%creator_id', '%creator_name', '%creator_email',
+                                    '%assignee', '%assignee_name', '%assignee_email',
+                                     '%project_id', '%project_email', '%user_name', '%user_email');
 
      /**
      * @access public
@@ -26,12 +29,23 @@ class MailTemplate extends Base
      */
     public function variableExpansion($project,$task,$msg)
     {
-        $user = $this->userSession->getAll();
+       $user = $this->userSession->getAll();
+
+       $creator = $this->userModel->getById($task['creator_id']);
+       // $owner = $this->userModel->getById($task['owner_id']);
+       $assignee = $this->userModel->getById ($this->userModel->getIdByUsername ($task['assignee_username']));
        // TODO remove repetion ?/use transposer array
-        $variables = array ($task['id'], $task['title'] , $task['description'], $project['id'],
-                            $project['email'], $user['username'], $user['email'] );
+       $variables = array ($task['id'], $task['title'] , $task['description'],
+                           $creator['id'], self::guessName($creator), $creator['email'],
+                           $assignee['id'], self::guessName($assignee), $assignee['email'],
+                           $project['id'], $project['email'],
+                           $user['username'], $user['email'] );
 
         return str_replace(self::$pattern ,$variables ,$msg);
+    }
+
+    public function guessName ($user){
+        return empty($user['name']) ? $user['username'] : $user['name'];
     }
 
      /**
