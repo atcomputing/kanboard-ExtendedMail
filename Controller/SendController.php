@@ -45,59 +45,14 @@ class SendController extends \Kanboard\Controller\CommentMailController
         $emails = explode_csv_field($values['emails']);
 
         foreach ($emails as $email) {
-            $this->send(
+            $this->emailClient->send(
                 $email,
                 $email,
                 $values['subject'],
                 $html,
+                null,
                 $values['reply_to']
             );
         }
-    }
-    // TODO is better if could use send from /Mail/client.php
-    /**
-     * Send a HTML email
-     *
-     * @access public
-     * @param  string  $recipientEmail
-     * @param  string  $recipientName
-     * @param  string  $subject
-     * @param  string  $html
-     * @param  string  $reply_to
-     * @return Client
-     */
-    public function send($recipientEmail, $recipientName, $subject, $html,$replyto)
-    {
-
-        if (! empty($recipientEmail)) {
-            $this->queueManager->push(EmailJob::getInstance($this->container)->withParams(
-                $recipientEmail,
-                $recipientName,
-                $subject,
-                $html,
-                $this->getAuthorName(),
-                $replyto
-            ));
-        }
-
-        return $this;
-    }
-
-    // TODO is better if could use getAuthorName  from /Mail/client.php
-    /**
-     * Get author email
-     *
-     * @access public
-     * @return string
-     */
-    public function getAuthorName()
-    {
-        $author = 'Kanboard';
-
-        if ($this->userSession->isLogged()) {
-            $author = e('%s via Kanboard', $this->helper->user->getFullname());
-        }
-
-        return $author;
     }
 }
