@@ -45,13 +45,13 @@
     <?= $this->form->label(t('Reply to'), 'Reply to') ?>
     <?= $this->form->text('mailTemplate_reply_to', $values, $errors, array('tabindex=3')) ?>
 
-    <?= $this->form->label(t('Description'), 'description') ?>
+    <?= $this->form->label(t('Comment'), 'description') ?>
     <?= $this->form->textEditor('mailTemplate_body', $values, $errors, array('tabindex' => 4)) ?>
     </fieldset>
     <?= $this->modal->submitButtons(array('tabindex' => 5)) ?>
 </form>
 
-<?= $this->form->label(t("available variables: "),"available variables: ") ?>
+<?= $this->form->label(t("available variables:"),"available variables:") ?>
 <ul style="margin-left: 10px">
 <?php foreach (\Kanboard\plugin\ExtendedMail\Helper\MailTemplate::$pattern as $p):?>
     <li style="display: inline;">
