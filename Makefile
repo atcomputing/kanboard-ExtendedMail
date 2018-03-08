@@ -1,4 +1,5 @@
 plugin=ExtendedMail
+version=0.8.0
 
 all:
 	@ echo "Build archive for plugin ${plugin} version=${version}"

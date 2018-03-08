@@ -33,22 +33,22 @@ class Plugin extends Base
 
     public function getPluginDescription()
     {
-        return t('My plugin is awesome');
+        return t('adds functionalit to send comment by mail: custom reply to, templates ... ');
     }
 
     public function getPluginAuthor()
     {
-        return 'rens';
+        return 'Rens Sikma';
     }
 
     public function getPluginVersion()
     {
-        return '1.0.0';
+        return '0.8.0';
     }
 
     public function getPluginHomepage()
     {
-        return 'https://github.com/kanboard/plugin-myplugin';
+        return 'https://github.com/kanboard/plugin-ExtendedMail';
     }
 }
 
