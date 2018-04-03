@@ -4,7 +4,7 @@
 <form method="post" action="<?= $this->url->href('SendController', 'save', array('plugin' => 'ExtendedMail','task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>" autocomplete="off" class="js-mail-form">
 
     <?php
-        $values['emails'] = isset ($values['email'] ) ? $values['email']: $this->MailTemplate->to($project,$task);
+        $values['emails'] = isset ($values['emails'] ) ? $values['emails']: $this->MailTemplate->to($project,$task);
         $values['subject'] = isset ($values['subject'] ) ? $values['subject'] : $this->MailTemplate->subject($project,$task);
         $values['reply_to'] = isset ($values['reply_to'] ) ? $values['reply_to'] : $this->MailTemplate->reply_to($project,$task);
         $values['comment'] = isset ($values['comment'] ) ? $values['comment'] : $this->MailTemplate->body($project,$task);
