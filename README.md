@@ -13,7 +13,7 @@ It ads:
 Author
 ------
 
-- rens
+- Rens Sikma
 - License MIT
 
 Requirements
