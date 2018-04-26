@@ -53,7 +53,8 @@
 
 <?= $this->form->label(t("available variables:"),"available variables:") ?>
 <ul style="margin-left: 10px">
-<?php foreach (\Kanboard\plugin\ExtendedMail\Helper\MailTemplate::$pattern as $p):?>
+
+<?php foreach ($this->MailTemplate->getPattern ()as $p):?>
     <li style="display: inline;">
         <?= "$p, " ?>
     </li style="display: inline;">

@@ -15,10 +15,14 @@ class MailTemplate extends Base
 {
 
     # if you update you should also update variableExpansion
-    public static $pattern = array ('%task_id', '%task_title', '%task_discription',
+    public const PATTERN = array ('%task_id', '%task_title', '%task_discription',
                                     '%creator_id', '%creator_name', '%creator_email',
                                     '%assignee', '%assignee_name', '%assignee_email',
                                      '%project_id', '%project_email', '%user_name', '%user_email');
+    public function getPattern(){
+        return self::PATTERN;
+    }
+
 
      /**
      * @access public
@@ -27,8 +31,7 @@ class MailTemplate extends Base
      * @param  string $msg
      * @return string
      */
-    public function variableExpansion($project,$task,$msg)
-    {
+    public function variableExpansion($project,$task,$msg) {
        $user = $this->userSession->getAll();
 
        $creator = $this->userModel->getById($task['creator_id']);
@@ -41,7 +44,7 @@ class MailTemplate extends Base
                            $project['id'], $project['email'],
                            $user['username'], $user['email'] );
 
-        return str_replace(self::$pattern ,$variables ,$msg);
+        return str_replace(self::PATTERN ,$variables ,$msg);
     }
 
     public function guessName ($user){
