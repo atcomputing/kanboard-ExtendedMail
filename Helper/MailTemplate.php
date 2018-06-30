@@ -15,7 +15,8 @@ class MailTemplate extends Base
 {
 
     # if you update you should also update variableExpansion
-    public const PATTERN = array ('%task_id', '%task_title', '%task_discription',
+    /* public */
+    const PATTERN = array ('%task_id', '%task_title', '%task_discription',
                                     '%creator_id', '%creator_name', '%creator_email',
                                     '%assignee', '%assignee_name', '%assignee_email',
                                      '%project_id', '%project_email', '%user_name', '%user_email');
