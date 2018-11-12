@@ -41,7 +41,7 @@ available variables you can use:
 
 * %task_id
 * %task_title
-* %task_discription
+* %task_description
 * %project_id
 * %project_email    (you can change this in: edit project)
 * %user_name
