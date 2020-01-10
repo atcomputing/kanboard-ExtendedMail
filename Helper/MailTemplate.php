@@ -19,7 +19,7 @@ class MailTemplate extends Base
     const PATTERN = array ('%task_id', '%task_title', '%task_description',
                                     '%creator_id', '%creator_name', '%creator_email',
                                     '%assignee', '%assignee_name', '%assignee_email',
-                                     '%project_id', '%project_email', '%user_name', '%user_email');
+                                     '%project_id', '%project_name', '%project_email', '%user_name', '%user_email');
     public function getPattern(){
         return self::PATTERN;
     }
@@ -42,7 +42,7 @@ class MailTemplate extends Base
        $variables = array ($task['id'], $task['title'] , $task['description'],
                            $creator['id'], self::guessName($creator), $creator['email'],
                            $assignee['id'], self::guessName($assignee), $assignee['email'],
-                           $project['id'], $project['email'],
+                           $project['id'], $project['name'], $project['email'],
                            $user['username'], $user['email'] );
 
         return str_replace(self::PATTERN ,$variables ,$msg);
